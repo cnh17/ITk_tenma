@@ -4,10 +4,10 @@ from time import time, sleep
 
 
 class Tenma:
-
-    """ 
+    
+    """
     Remote Control Interface to TENMA power supply
-    Tested on TENMA 72-2930 
+    Tested on TENMA 72-2930
     """
     
     # initialize object
@@ -16,14 +16,14 @@ class Tenma:
         self.__record['V']  = []               # set up tracking of voltage
         self.__record['I']  = []               # set up tracking of current
         self.__range        = {}
-        self.__range['V']   = (0.0, 24.0)      # min,max voltage
+        self.__range['V']   = (0.0, 30.0)      # min,max voltage
         self.__range['I']   = (0.0, 10.0)      # min,max current
-        self.__time_ref     = time()           # time reference for tracking 
+        self.__time_ref     = time()           # time reference for tracking
         self.__sleep        = 0.1              # sleep time between read/write to device
         self.__ser          = serial.Serial()  # initialize port
         self.__ser.port     = port             # port name
         self.__ser.baudrate = baudrate         # baud rate
-        self.__ser.bytesize = bytesize         # data bit 
+        self.__ser.bytesize = bytesize         # data bit
         self.__ser.parity   = parity           # parity bit
         self.__ser.stopbits = stopbits         # stop bit
         self.__ser.xonxoff  = xonxoff          # data flow control
@@ -32,8 +32,12 @@ class Tenma:
         print('Serial port is open : ', self.__ser.is_open)
         print('Device name         : ', self.__ser.name)
         self.print_port_config()
-        
-        
+        self.set_value('V', 0)
+        self.set_value('I', 0)
+        """
+        Added start values of V=0, I=0
+        """
+    
     # generic method to send commands to device
     def __command(self, token, decode_reply = True):
         self.__ser.write( token.encode('utf-8') )
@@ -45,14 +49,14 @@ class Tenma:
                 return reply.decode('utf-8').rstrip('\x00')
             else:
                 return reply
-        
-        
+    
+
     # get value of key ('V', 'I')
     def get_value(self, key, channel = 1):
         token = key + 'SET' + str(channel) + '?'
         return float(self.__command( token ))
-
-
+    
+    
     # set value of key ('V', 'I')
     def set_value(self, key, value, channel = 1):
         if value < self.__range[key][0]:
@@ -64,20 +68,19 @@ class Tenma:
         token = key + 'SET' + str(channel) + ':' + str(value)
         self.__command( token )
         self.__record[key].append( ((time() - self.__time_ref), value) )
-        
-
+    
+    
     # increment value of key ('V', 'I')
     def increment(self, key, increment, channel = 1):
         value = self.get_value(key, channel) + increment
         self.set_value(key, value, channel)
-
-
+    
+    
     # get record for key ('V', 'I')
     def get_record(self, key):
         return self.__record[key]
-        
-
+    
+    
     # print port configuration
     def print_port_config(self):
         print('Tenma serial port settings: \n', self.__ser.get_settings())
-
