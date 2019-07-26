@@ -1,0 +1,27 @@
+PySerial:
+=========
+- https://pyserial.readthedocs.io/en/latest/pyserial.html
+
+
+Tenma power supply:
+===================
+- http://www.farnell.com/datasheets/2054525.pdf
+- http://www.farnell.com/datasheets/1848826.pdf
+
+
+Arduino board/software:
+=======================
+- https://www.arduino.cc/
+- https://www.arduino.cc/en/main/FAQ#Arduino_Software
+using python instead of C...?:
+- https://github.com/thearn/Python-Arduino-Command-API/blob/master/examples.py
+
+
+PID control:
+============
+Feedback loop: read temperature <-> adjust voltage/current on tenma power supply to increase/decrease temperature on Peltier elements
+- http://blog.opticontrols.com/archives/344
+- chapter 3 in http://www.cse.zju.edu.cn/eclass/attachments/2013-03/01-1362529387-2734.pdf
+
+
+

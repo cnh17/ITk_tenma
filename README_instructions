@@ -1,0 +1,33 @@
+
+
+
+Intall pySerial in Anaconda environment:
+========================================
+First, anaconda should be installed...
+Then, create a new environment and install pySerial:
+> conda create --name itk
+> conda activate itk
+> conda install -c anaconda pyserial
+
+
+Run remote control of tenma power supply (for Peltier elements):
+================================================================
+1) Connect tenma power supply to pc via USB and turn power on
+2) Set permissions on serial port (here ttyUSB0):
+   > sudo chmod 777 /dev/ttyUSB0
+3) Run main.py:
+   > python main.py
+
+
+
+Arduino microprocessor board / SHT2x sensor (temperature/humidity):
+===================================================================
+Tested with 'Arduino/Genuino Uno' board
+1) download and install arduino software (https://www.arduino.cc/en/guide/linux)
+2) download and install libraries:
+   a) SHT2x sensor library (Sodaq_SHT2x): download .zip file from https://www.arduinolibraries.info/libraries/sodaq_sht2x 
+   b) watch dog timer (Sodaq_wdt): download .zip from https://github.com/SodaqMoja/Sodaq_wdt (click 'Clone or download' and select 'Download ZIP')
+   --> For both libraries, follow 'importing a .zip library' on https://www.arduino.cc/en/guide/libraries. In short: open arduino IDE with './arduino' in arduino folder, then click on 'Sketches'->'Include Library'->'Add .ZIP Library', and navigate to .zip file and open it. Done!)
+3) Open test file from Jan in arduino IDE and press 'Verify' to check if it 'compiles'
+4) ==> modify Jan's test file for our needs! 
+
