@@ -3,10 +3,10 @@ PySerial:
 - https://pyserial.readthedocs.io/en/latest/pyserial.html
 
 
-Tenma power supply:
+Tenma power supply:  // corrected links to right manual and data sheet for TENMA 72-2930
 ===================
-- http://www.farnell.com/datasheets/2054525.pdf
-- http://www.farnell.com/datasheets/1848826.pdf
+- http://www.farnell.com/datasheets/2372012.pdf
+- http://www.farnell.com/datasheets/2724060.pdf
 
 
 Arduino board/software:
@@ -24,4 +24,6 @@ Feedback loop: read temperature <-> adjust voltage/current on tenma power supply
 - chapter 3 in http://www.cse.zju.edu.cn/eclass/attachments/2013-03/01-1362529387-2734.pdf
 
 
+Peltier element : Farnell vnr. 1639722
 
+Sensor (temperature/humidity) : SHT21

@@ -1,6 +1,4 @@
 
-
-
 Intall pySerial in Anaconda environment:
 ========================================
 First, anaconda should be installed...
@@ -19,6 +17,10 @@ Run remote control of tenma power supply (for Peltier elements):
    > python main.py
 
 
+***
+Now using a raspberry pi so not same method here.
+Tested in Thonny which opens automatically when you open main.py and tenma.py on the raspberry pi. Run in Thonny not the Terminal as this code requires python 3, where as the terminal runs python 2.
+***
 
 Arduino microprocessor board / SHT2x sensor (temperature/humidity):
 ===================================================================
